@@ -54,7 +54,7 @@ public class MainMenuControl : MonoBehaviour
         menuControls.SetActive(false); // Ocultar el botón inmediatamente
         fadeOut.SetActive(true);
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("Run");
+        SceneManager.LoadScene(2);
     }
 
     IEnumerator AnimCam()
