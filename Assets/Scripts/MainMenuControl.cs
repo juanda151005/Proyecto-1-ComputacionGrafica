@@ -12,10 +12,22 @@ public class MainMenuControl : MonoBehaviour
     [SerializeField] GameObject mainCam;
     [SerializeField] GameObject menuControls;
     [SerializeField] AudioSource buttonSelect;
+    public static bool hasClicked = false;
+    [SerializeField] GameObject staticCam;
+    [SerializeField] GameObject fadeIn;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        StartCoroutine(FadeInTurnOff());
+        if(hasClicked == true)
+        {
+            staticCam.SetActive(true);
+            mainCam.SetActive(false);
+            menuControls.SetActive(true);
+            bounceText.SetActive(false);
+            bigButton.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -51,9 +63,15 @@ public class MainMenuControl : MonoBehaviour
         bounceText.SetActive(false);
         bigButton.SetActive(false);
         yield return new WaitForSeconds(1.5f);
+        fadeIn.SetActive(false);
         mainCam.SetActive(true);
         animCam.SetActive(false);
         menuControls.SetActive(true);
-        
+        hasClicked = true;
+    }
+
+    IEnumerator FadeInTurnOff(){
+        yield return new WaitForSeconds(1);
+        fadeIn.SetActive(false);
     }
 }
