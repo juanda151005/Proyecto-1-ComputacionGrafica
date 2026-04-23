@@ -100,3 +100,5 @@ InitTestScene*.unity*
 
 # macOS system files
 **/.DS_Store
+
+.claude/
