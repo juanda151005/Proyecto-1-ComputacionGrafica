@@ -3,9 +3,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float playerSpeed = 7;
-    public float maxPlayerSpeed = 22; // Límite máximo de velocidad
-    public float horizontalSpeed = 5;
+    public float playerSpeed = 8.5f;
+    public float maxPlayerSpeed = 25; // Límite máximo de velocidad
+    public float horizontalSpeed = 6;
+    public float maxHorizontalSpeed = 10f; // Límite de velocidad horizontal
     public float rightLimit = 5.5f;
     public float leftLimit = -5.5f;
     
@@ -23,6 +24,10 @@ public class PlayerMovement : MonoBehaviour
         // Incrementar la velocidad poco a poco, pero solo hasta el máximo permitido
         playerSpeed += Time.deltaTime * 0.2f; 
         playerSpeed = Mathf.Clamp(playerSpeed, 0, maxPlayerSpeed); 
+
+        // Incrementar la velocidad horizontal poco a poco hasta el límite de 10
+        horizontalSpeed += Time.deltaTime * 0.05f; 
+        horizontalSpeed = Mathf.Clamp(horizontalSpeed, 0, maxHorizontalSpeed); 
 
         transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World);
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
