@@ -154,10 +154,9 @@ GameObject:
   - component: {fileID: 8018423290720605178}
   - component: {fileID: 8526204653636695932}
   - component: {fileID: 4041671819042710240}
-  - component: {fileID: 9209014079030874833}
   m_Layer: 0
   m_Name: Crate01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -256,23 +255,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9209014079030874833
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 848401091360165746}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &858812560548328177
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,10 +776,9 @@ GameObject:
   - component: {fileID: 5997430474654049295}
   - component: {fileID: 3910302316192079617}
   - component: {fileID: 2561659592895505585}
-  - component: {fileID: 4695218716183181240}
   m_Layer: 0
   m_Name: Obstacle_S2_RockR
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -896,23 +877,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4695218716183181240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2435935868204964865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &2946342555228953666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1299,10 +1263,9 @@ GameObject:
   - component: {fileID: 8174936612259664512}
   - component: {fileID: 5785888527053732483}
   - component: {fileID: 3871973998949368179}
-  - component: {fileID: 7961699941378872071}
   m_Layer: 0
   m_Name: Rock01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1401,23 +1364,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7961699941378872071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3807852767213584973}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &3938491158743873315
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,10 +2000,9 @@ GameObject:
   - component: {fileID: 3692333058231770611}
   - component: {fileID: 1045321300162901611}
   - component: {fileID: 8778000179364142059}
-  - component: {fileID: 4792693312241819577}
   m_Layer: 0
   m_Name: Tree01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2156,23 +2101,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4792693312241819577
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6351701096257701576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &6758170336526771636
 GameObject:
   m_ObjectHideFlags: 0
@@ -2276,10 +2204,9 @@ GameObject:
   - component: {fileID: 8407174768122436039}
   - component: {fileID: 4045526142149969432}
   - component: {fileID: 1052213887108307009}
-  - component: {fileID: 301191333905648247}
   m_Layer: 0
   m_Name: Obstacle_S2_TreeL
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2378,23 +2305,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &301191333905648247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6819407580683042239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &6961881364730513623
 GameObject:
   m_ObjectHideFlags: 0
@@ -3098,6 +3008,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2
       objectReference: {fileID: 0}
+    - target: {fileID: 1978445070297066, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4646933745565138, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.1652083
@@ -3149,38 +3063,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1978445070297066, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 412878198127544305}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
 --- !u!4 &316989451648304233 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4646933745565138, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
   m_PrefabInstance: {fileID: 321636179134511547}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &320222884232863313 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1978445070297066, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
-  m_PrefabInstance: {fileID: 321636179134511547}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &412878198127544305
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 320222884232863313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1001 &919223990118824013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4353,6 +4242,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_4
       objectReference: {fileID: 0}
+    - target: {fileID: 1150461584060438, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4244113901689226, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.209605
@@ -4404,38 +4297,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1150461584060438, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7773958207119343435}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
 --- !u!4 &5775733906051635456 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4244113901689226, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
   m_PrefabInstance: {fileID: 5776029924907024522}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &5777136232951165084 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1150461584060438, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
-  m_PrefabInstance: {fileID: 5776029924907024522}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7773958207119343435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5777136232951165084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1001 &6205501076502706256
 PrefabInstance:
   m_ObjectHideFlags: 0

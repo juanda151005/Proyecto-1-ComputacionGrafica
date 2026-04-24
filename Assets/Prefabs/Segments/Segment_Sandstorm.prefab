@@ -91,6 +91,135 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &424877895550788758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 609887798061566154}
+  - component: {fileID: 8654593077379378260}
+  m_Layer: 0
+  m_Name: CoinCollect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &609887798061566154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424877895550788758}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7898821956674569600}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8654593077379378260
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424877895550788758}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 19dbaf8c70cfe4d5e9544ad6a190f7dc, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &788122456994011274
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &802675028699001432
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &913426256154020050
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,7 +645,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &935361161095555907
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,7 +877,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &1228228371451794715
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,7 +1019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &1296316725730683561
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,10 +1032,9 @@ GameObject:
   - component: {fileID: 7022939964812351061}
   - component: {fileID: 4285037537356101086}
   - component: {fileID: 3819708317633550065}
-  - component: {fileID: 3296786251067401219}
   m_Layer: 0
   m_Name: Rock01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1005,23 +1133,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3296786251067401219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1296316725730683561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &1342646877246021203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1163,7 +1274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &1349418023743319526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,10 +1287,9 @@ GameObject:
   - component: {fileID: 4071712571999497769}
   - component: {fileID: 59572208245964287}
   - component: {fileID: 2540126480444182836}
-  - component: {fileID: 8834609176790191892}
   m_Layer: 0
   m_Name: Obstacle_S3_TreeL_Mid
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1278,23 +1388,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8834609176790191892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1349418023743319526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &1487290957461870075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,7 +1529,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &1829753886968758184
 GameObject:
   m_ObjectHideFlags: 0
@@ -1578,7 +1671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &2480995553256658102
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,7 +1813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &2605771869752138337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,7 +1825,7 @@ GameObject:
   - component: {fileID: 8665565646310669276}
   m_Layer: 0
   m_Name: Segment_Sandstorm
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1802,6 +1895,8 @@ Transform:
   - {fileID: 332540451990266270}
   - {fileID: 2617738578552275928}
   - {fileID: 1943024706246752563}
+  - {fileID: 8438730007049482131}
+  - {fileID: 7898821956674569600}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2665767421998526728
@@ -1816,10 +1911,9 @@ GameObject:
   - component: {fileID: 7900464054087853375}
   - component: {fileID: 7620234317172593383}
   - component: {fileID: 1227471525080635930}
-  - component: {fileID: 3309624344794598910}
   m_Layer: 0
   m_Name: Tree01 (1)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1918,23 +2012,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3309624344794598910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2665767421998526728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &2889718301054795925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2166,7 +2243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &3360105023198290086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2246,10 +2323,9 @@ GameObject:
   - component: {fileID: 7543674220511460874}
   - component: {fileID: 8903511783229299024}
   - component: {fileID: 2892119186469084979}
-  - component: {fileID: 3718768993846038024}
   m_Layer: 0
   m_Name: Tree01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2348,23 +2424,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3718768993846038024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3689313371387661701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &3832730632045266596
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,7 +2565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &4115238238497423666
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,7 +2740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &4561395869118834284
 GameObject:
   m_ObjectHideFlags: 0
@@ -7659,7 +7718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &5047444005864163859
 GameObject:
   m_ObjectHideFlags: 0
@@ -7762,10 +7821,9 @@ GameObject:
   - component: {fileID: 5094251264627095696}
   - component: {fileID: 6330323291325156404}
   - component: {fileID: 2441670131053349016}
-  - component: {fileID: 3262487698799654454}
   m_Layer: 0
   m_Name: Tree01 (2)
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7864,23 +7922,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3262487698799654454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5114868398244696238}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &5219847233216157609
 GameObject:
   m_ObjectHideFlags: 0
@@ -7893,10 +7934,9 @@ GameObject:
   - component: {fileID: 3932981766287458736}
   - component: {fileID: 8109736976417145422}
   - component: {fileID: 370745007103548683}
-  - component: {fileID: 1015850460543817379}
   m_Layer: 0
   m_Name: Obstacle_S3_TreeR_End
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7995,23 +8035,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1015850460543817379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5219847233216157609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1 &5674310736466960372
 GameObject:
   m_ObjectHideFlags: 0
@@ -12972,6 +12995,168 @@ Transform:
   - {fileID: 2546936511522478238}
   m_Father: {fileID: 2113755302118033592}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6893879171904895230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7898821956674569600}
+  m_Layer: 0
+  m_Name: Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7898821956674569600
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6893879171904895230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 609887798061566154}
+  - {fileID: 566684288585544241}
+  m_Father: {fileID: 8665565646310669276}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7029332769101745143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 566684288585544241}
+  - component: {fileID: 5267613136072901737}
+  m_Layer: 0
+  m_Name: Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &566684288585544241
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7029332769101745143}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7898821956674569600}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &5267613136072901737
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7029332769101745143}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 60d5ffe7a81e44504af9c1cce70d13d9, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7354529423744109626
 GameObject:
   m_ObjectHideFlags: 0
@@ -13225,7 +13410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &7535350600031369750
 GameObject:
   m_ObjectHideFlags: 0
@@ -13367,7 +13552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &8078625734640490315
 GameObject:
   m_ObjectHideFlags: 0
@@ -13509,7 +13694,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72d7452d116d4a749333cb4874c03bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectCoin
-  coinSFX: {fileID: 0}
+  coinSFX: {fileID: 8654593077379378260}
 --- !u!1 &8175890331590702066
 GameObject:
   m_ObjectHideFlags: 0
@@ -13600,6 +13785,91 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8224683495177217150
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8438730007049482131}
+  - component: {fileID: 4492391507141656926}
+  - component: {fileID: 7897008541450889077}
+  - component: {fileID: 2093677470705447848}
+  m_Layer: 0
+  m_Name: FogZone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8438730007049482131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224683495177217150}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8665565646310669276}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4492391507141656926
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224683495177217150}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 12, y: 10, z: 50}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7897008541450889077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224683495177217150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bf835acfce97c4ea050617c1be7cba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FogZone
+  fogColor: {r: 0.85, g: 0.7, b: 0.5, a: 1}
+  fogDensity: 0.04
+  fogMode: 3
+--- !u!114 &2093677470705447848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8224683495177217150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9eb3977b6606724ba689a41c4bd3e38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WindPushZone
+  windStrength: 3
+  rightLimit: 5.5
+  leftLimit: -5.5
 --- !u!1 &9039553180299622627
 GameObject:
   m_ObjectHideFlags: 0
@@ -13855,6 +14125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_1
       objectReference: {fileID: 0}
+    - target: {fileID: 1745671036675386, guid: 74442f407a24ac84f95f08a83b1bb617, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4483830403358642, guid: 74442f407a24ac84f95f08a83b1bb617, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.4
@@ -13918,38 +14192,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1745671036675386, guid: 74442f407a24ac84f95f08a83b1bb617, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3539306865810293595}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74442f407a24ac84f95f08a83b1bb617, type: 3}
 --- !u!4 &275062115842508280 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4483830403358642, guid: 74442f407a24ac84f95f08a83b1bb617, type: 3}
   m_PrefabInstance: {fileID: 278899424000285258}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &277228808053997424 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1745671036675386, guid: 74442f407a24ac84f95f08a83b1bb617, type: 3}
-  m_PrefabInstance: {fileID: 278899424000285258}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &3539306865810293595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277228808053997424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1001 &385305587623004852
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14792,6 +15041,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_4 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1150461584060438, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4244113901689226, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.31
@@ -14843,38 +15096,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1150461584060438, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8556389904732628550}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
 --- !u!4 &3243732199693624860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4244113901689226, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
   m_PrefabInstance: {fileID: 3245721766974406550}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3246823299216871296 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1150461584060438, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
-  m_PrefabInstance: {fileID: 3245721766974406550}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &8556389904732628550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3246823299216871296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1001 &3275052351247563051
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15163,6 +15391,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2
       objectReference: {fileID: 0}
+    - target: {fileID: 1978445070297066, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4646933745565138, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.1652083
@@ -15214,33 +15446,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1978445070297066, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4466801802029858798}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
---- !u!1 &5271850687930453424 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1978445070297066, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
-  m_PrefabInstance: {fileID: 5273265627834952282}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4466801802029858798
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5271850687930453424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!4 &5277908129136498568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4646933745565138, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
@@ -15444,6 +15651,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1978445070297066, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4646933745565138, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5
@@ -15507,38 +15718,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1978445070297066, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5520490855210696765}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
 --- !u!4 &6731118250680855620 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4646933745565138, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
   m_PrefabInstance: {fileID: 6735483154855481750}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &6736885163656394364 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1978445070297066, guid: 4983f395b2610de4e9f688a87bbd9af9, type: 3}
-  m_PrefabInstance: {fileID: 6735483154855481750}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &5520490855210696765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6736885163656394364}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!1001 &6779633466085807813
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15749,6 +15935,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock_4
       objectReference: {fileID: 0}
+    - target: {fileID: 1150461584060438, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 4244113901689226, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.02
@@ -15800,33 +15990,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1150461584060438, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7921308976710684207}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
---- !u!1 &8782177364938125076 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1150461584060438, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}
-  m_PrefabInstance: {fileID: 8783314078129413890}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7921308976710684207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8782177364938125076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 77aacc1c8ad774c8bbb40843867a6ab9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 0}
-  playerAnim: {fileID: 0}
-  collisionFX: {fileID: 0}
-  mainCam: {fileID: 0}
-  fadeOut: {fileID: 0}
 --- !u!4 &8785267651575826056 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4244113901689226, guid: 836ca07fc69b4184ca14265c7d24030d, type: 3}

@@ -1,31 +1,27 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class CollisionDetect : MonoBehaviour
 {
-    
-    [SerializeField] GameObject thePlayer;
-    [SerializeField] GameObject playerAnim;
-    [SerializeField] AudioSource collisionFX;
-    [SerializeField] GameObject mainCam;
-    [SerializeField] GameObject fadeOut;
-    
+    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] Animator playerAnim;
+    [SerializeField] string obstacleTag = "Obstacle";
+
+    bool dead = false;
+
     void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(CollisionEnd());
-    }
+        if (dead) return;
+        if (!other.CompareTag(obstacleTag)) return;
 
-    IEnumerator CollisionEnd()
-    {
-        collisionFX.Play();
-        thePlayer.GetComponent<PlayerMovement>().enabled = false;
-        playerAnim.GetComponent<Animator>().Play("Stumble Backwards");
-        mainCam.GetComponent<Animator>().Play("CollisionCam");
-        yield return new WaitForSeconds(1);
-        fadeOut.SetActive(true);
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene("MainMenu");
-        
+        dead = true;
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.StartDeathSequence(playerMovement, playerAnim);
+        }
+        else
+        {
+            Debug.LogWarning("[CollisionDetect] No hay GameManager en la escena.");
+        }
     }
 }

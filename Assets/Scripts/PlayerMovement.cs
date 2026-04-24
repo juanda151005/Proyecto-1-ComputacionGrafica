@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float playerSpeed = 8.5f;
-    public float maxPlayerSpeed = 25; // Límite máximo de velocidad
+    public float maxPlayerSpeed = 22; // Límite máximo de velocidad
     public float horizontalSpeed = 6;
     public float maxHorizontalSpeed = 10f; // Límite de velocidad horizontal
     public float rightLimit = 5.5f;
