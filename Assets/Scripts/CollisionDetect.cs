@@ -13,6 +13,16 @@ public class CollisionDetect : MonoBehaviour
         if (dead) return;
         if (!other.CompareTag(obstacleTag)) return;
 
+        // Si el jugador tiene escudo, absorbe el golpe y no muere
+        PlayerShield shield = playerMovement != null
+            ? playerMovement.GetComponent<PlayerShield>()
+            : GetComponentInParent<PlayerShield>();
+        if (shield != null && shield.IsShielded)
+        {
+            shield.AbsorbHit();
+            return;
+        }
+
         dead = true;
 
         if (GameManager.Instance != null)
