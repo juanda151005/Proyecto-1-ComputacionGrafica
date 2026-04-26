@@ -42,8 +42,12 @@ public class GameManager : MonoBehaviour
     IEnumerator DeathSequence(PlayerMovement player, Animator playerAnim)
     {
         if (collisionSFX != null) collisionSFX.Play();
+
+        // Detener al jugador en seco para que no atraviese el obstáculo,
+        // pero mezclar la animación de tropiezo con un crossfade para que
+        // la transición no se vea cortada.
         if (player != null) player.enabled = false;
-        if (playerAnim != null) playerAnim.Play("Stumble Backwards");
+        if (playerAnim != null) playerAnim.CrossFadeInFixedTime("Stumble Backwards", 0.01f);
         if (mainCamAnim != null) mainCamAnim.Play("CollisionCam");
 
         yield return new WaitForSeconds(stumbleDelay);
