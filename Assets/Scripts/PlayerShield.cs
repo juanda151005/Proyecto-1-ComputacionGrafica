@@ -45,21 +45,33 @@ public class PlayerShield : MonoBehaviour
         // Sin collider para no interferir con nada
         Destroy(shieldVisual.GetComponent<Collider>());
 
-        // Material URP transparente con emisión
-        shieldMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        // Intentar usar el shader CrystalShield; si no carga (editor sin compilar), caer al URP/Lit
+        Shader crystalShader = Shader.Find("Custom/CrystalShield");
+        bool   useCrystal    = crystalShader != null;
 
-        shieldMat.SetFloat("_Surface",    1f);   // Transparent
-        shieldMat.SetFloat("_Blend",      0f);   // Alpha
-        shieldMat.SetFloat("_SrcBlend",   5f);   // SrcAlpha
-        shieldMat.SetFloat("_DstBlend",  10f);   // OneMinusSrcAlpha
-        shieldMat.SetFloat("_ZWrite",     0f);
-        shieldMat.SetFloat("_AlphaClip",  0f);
-        shieldMat.renderQueue = 3000;
-        shieldMat.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
-
-        shieldMat.color = shieldColor;
-        shieldMat.EnableKeyword("_EMISSION");
-        shieldMat.SetColor("_EmissionColor", emissionColor * emissionIntensity);
+        if (useCrystal)
+        {
+            shieldMat = new Material(crystalShader);
+            shieldMat.SetColor("_BaseColor",     shieldColor);
+            shieldMat.SetColor("_EmissionColor", emissionColor);
+            shieldMat.SetFloat("_EmissionPower", emissionIntensity * 1.5f);
+        }
+        else
+        {
+            // Fallback: URP/Lit transparente (mismo comportamiento anterior)
+            shieldMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+            shieldMat.SetFloat("_Surface",   1f);
+            shieldMat.SetFloat("_Blend",     0f);
+            shieldMat.SetFloat("_SrcBlend",  5f);
+            shieldMat.SetFloat("_DstBlend", 10f);
+            shieldMat.SetFloat("_ZWrite",    0f);
+            shieldMat.SetFloat("_AlphaClip", 0f);
+            shieldMat.renderQueue = 3000;
+            shieldMat.EnableKeyword("_SURFACE_TYPE_TRANSPARENT");
+            shieldMat.color = shieldColor;
+            shieldMat.EnableKeyword("_EMISSION");
+            shieldMat.SetColor("_EmissionColor", emissionColor * emissionIntensity);
+        }
 
         shieldVisual.GetComponent<Renderer>().material = shieldMat;
     }
@@ -98,6 +110,11 @@ public class PlayerShield : MonoBehaviour
         ShieldTimeNormalized = 0f;
         shieldVisual.SetActive(false);
         OnShieldExpired?.Invoke();
+
+        // Puff azul al expirar
+        PowerExpireEffect.Spawn(transform.position + Vector3.up * 0.8f,
+                                new Color(0.25f, 0.75f, 1f));
+
         Debug.Log("[PlayerShield] Escudo desactivado.");
     }
 }

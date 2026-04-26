@@ -43,6 +43,11 @@ public class PlayerDoubleJump : MonoBehaviour
         IsActive            = false;
         PowerTimeNormalized = 0f;
         OnPowerExpired?.Invoke();
+
+        // Puff naranja al expirar
+        PowerExpireEffect.Spawn(transform.position + Vector3.up * 0.8f,
+                                new Color(1f, 0.45f, 0.05f));
+
         Debug.Log("[PlayerDoubleJump] Doble salto expirado.");
     }
 }

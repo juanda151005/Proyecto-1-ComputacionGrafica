@@ -48,6 +48,10 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(stumbleDelay);
 
+        // Mostrar distancia recorrida y mejor distancia
+        if (GameOverScreen.Instance != null)
+            GameOverScreen.Instance.Show(MasterInfo.CurrentDistance);
+
         if (fadeOut != null) fadeOut.SetActive(true);
 
         yield return new WaitForSeconds(fadeDelay);

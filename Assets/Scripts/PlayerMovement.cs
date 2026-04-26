@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxHorizontalSpeed = 10f; // Límite de velocidad horizontal
     public float rightLimit = 5.5f;
     public float leftLimit = -5.5f;
-    
+
     [Header("Jump Settings")]
     public float jumpForce = 8f;
     public float gravity = -20f;
@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerDoubleJump doubleJump;
 
     [SerializeField] Animator playerAnim;
-    
+
     void Awake()
     {
         doubleJump = GetComponent<PlayerDoubleJump>();
@@ -30,12 +30,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // Incrementar la velocidad poco a poco, pero solo hasta el máximo permitido
-        playerSpeed += Time.deltaTime * 0.2f; 
-        playerSpeed = Mathf.Clamp(playerSpeed, 0, maxPlayerSpeed); 
+        playerSpeed += Time.deltaTime * 0.2f;
+        playerSpeed = Mathf.Clamp(playerSpeed, 0, maxPlayerSpeed);
 
         // Incrementar la velocidad horizontal poco a poco hasta el límite de 10
-        horizontalSpeed += Time.deltaTime * 0.05f; 
-        horizontalSpeed = Mathf.Clamp(horizontalSpeed, 0, maxHorizontalSpeed); 
+        horizontalSpeed += Time.deltaTime * 0.05f;
+        horizontalSpeed = Mathf.Clamp(horizontalSpeed, 0, maxHorizontalSpeed);
 
         transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World);
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
@@ -82,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         // Aplicar movimiento vertical
         transform.Translate(new Vector3(0, verticalVelocity * Time.deltaTime, 0), Space.World);
 
-        // Chequeo muy básico de piso usando la altura configurable
+        // Chequeo de piso
         if (transform.position.y <= groundHeight)
         {
             transform.position = new Vector3(transform.position.x, groundHeight, transform.position.z);
