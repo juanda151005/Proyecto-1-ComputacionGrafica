@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         playerSpeed = Mathf.Clamp(playerSpeed, 0, maxPlayerSpeed);
 
         // Incrementar la velocidad horizontal poco a poco hasta el límite de 10
-        horizontalSpeed += Time.deltaTime * 0.05f;
+        horizontalSpeed += Time.deltaTime * 0.03f;
         horizontalSpeed = Mathf.Clamp(horizontalSpeed, 0, maxHorizontalSpeed);
 
         // --- Velocidad efectiva por zona lenta (pantano) ---
