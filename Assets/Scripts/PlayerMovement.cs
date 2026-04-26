@@ -20,34 +20,60 @@ public class PlayerMovement : MonoBehaviour
 
     PlayerDoubleJump doubleJump;
 
+    [Header("Slow Zones")]
+    [SerializeField] string slowZoneTag = "Swamp";
+    [SerializeField] float swampForwardSpeed = 4f;     // velocidad fija hacia adelante dentro del pantano
+    [SerializeField] float swampHorizontalSpeed = 3f;  // velocidad fija lateral dentro del pantano
+    [SerializeField] float speedRecoverPerSecond = 6f; // unidades/segundo que sube al salir hasta alcanzar la velocidad real
+    private float effSpeed;   // velocidad efectiva hacia adelante
+    private float effHoriz;   // velocidad efectiva lateral
+    private int slowZoneCount = 0; // soporta superposición de zonas
+
     [SerializeField] Animator playerAnim;
 
     void Awake()
     {
         doubleJump = GetComponent<PlayerDoubleJump>();
+        // Inicializar para que antes de tocar un pantano corra a su velocidad real.
+        effSpeed = playerSpeed;
+        effHoriz = horizontalSpeed;
     }
 
     void Update()
     {
         // Incrementar la velocidad poco a poco, pero solo hasta el máximo permitido
-        playerSpeed += Time.deltaTime * 0.2f;
+        playerSpeed += Time.deltaTime * 0.1f;
         playerSpeed = Mathf.Clamp(playerSpeed, 0, maxPlayerSpeed);
 
         // Incrementar la velocidad horizontal poco a poco hasta el límite de 10
         horizontalSpeed += Time.deltaTime * 0.05f;
         horizontalSpeed = Mathf.Clamp(horizontalSpeed, 0, maxHorizontalSpeed);
 
-        transform.Translate(Vector3.forward * Time.deltaTime * playerSpeed, Space.World);
+        // --- Velocidad efectiva por zona lenta (pantano) ---
+        // Dentro: velocidad fija (no depende de la velocidad real acumulada).
+        // Fuera: sube gradualmente hasta alcanzar la velocidad real actual.
+        if (slowZoneCount > 0)
+        {
+            effSpeed = swampForwardSpeed;
+            effHoriz = swampHorizontalSpeed;
+        }
+        else
+        {
+            effSpeed = Mathf.MoveTowards(effSpeed, playerSpeed, speedRecoverPerSecond * Time.deltaTime);
+            effHoriz = Mathf.MoveTowards(effHoriz, horizontalSpeed, speedRecoverPerSecond * Time.deltaTime);
+        }
+
+        transform.Translate(Vector3.forward * Time.deltaTime * effSpeed, Space.World);
         if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed)
         {
             if (this.gameObject.transform.position.x > leftLimit){
-                transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed);
+                transform.Translate(Vector3.left * Time.deltaTime * effHoriz);
             }
         }
         if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed)
         {
             if (this.gameObject.transform.position.x < rightLimit){
-                transform.Translate(Vector3.left * Time.deltaTime * horizontalSpeed * -1);
+                transform.Translate(Vector3.left * Time.deltaTime * effHoriz * -1);
             }
         }
 
@@ -88,5 +114,17 @@ public class PlayerMovement : MonoBehaviour
             transform.position = new Vector3(transform.position.x, groundHeight, transform.position.z);
             isGrounded = true;
         }
+    }
+
+    // --- Detección de zonas lentas (pantano, etc.) ---
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag(slowZoneTag)) slowZoneCount++;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag(slowZoneTag))
+            slowZoneCount = Mathf.Max(0, slowZoneCount - 1);
     }
 }

@@ -84,7 +84,7 @@ Shader "Custom/SwampShaderURP"
               [domain("tri")]
               [outputcontrolpoints(3)]
               [outputtopology("triangle_cw")]
-              [partitioning("integer")]
+              [partitioning("fractional_odd")]
               [patchconstantfunc("patchConstantFunc")]
               tessControlPoint hull(InputPatch<tessControlPoint, 3> patch, uint id : SV_OutputControlPointID)
               {
@@ -138,7 +138,11 @@ Shader "Custom/SwampShaderURP"
                       patch[1].uv * barycentricCoordinates.y +
                       patch[2].uv * barycentricCoordinates.z;
 
-                  float waveHeight = sin(positionWS.x + positionWS.z + _Time.y * _WaveSpeed) * _WaveHeight;
+                  // Dos olas cruzadas a frecuencias distintas para un movimiento más orgánico
+                  float t = _Time.y * _WaveSpeed;
+                  float wave1 = sin(positionWS.x * 0.6 + positionWS.z * 0.4 + t);
+                  float wave2 = sin(positionWS.x * 0.25 - positionWS.z * 0.7 + t * 1.3) * 0.6;
+                  float waveHeight = (wave1 + wave2) * _WaveHeight;
                   float3 newPositionWS = float3(positionWS.x, positionWS.y + waveHeight, positionWS.z);
 
                   i.positionCS = TransformWorldToHClip(newPositionWS);
