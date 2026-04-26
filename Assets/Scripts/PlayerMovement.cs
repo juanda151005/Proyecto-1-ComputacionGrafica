@@ -15,10 +15,18 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = -20f;
     public float groundHeight = 0f; // <--- ALTURA PERSONALIZABLE DEL PISO
     private float verticalVelocity = 0;
-    private bool isGrounded = true;
+    private bool  isGrounded   = true;
+    private int   airJumpCount = 0;   // saltos usados en el aire
+
+    PlayerDoubleJump doubleJump;
 
     [SerializeField] Animator playerAnim;
     
+    void Awake()
+    {
+        doubleJump = GetComponent<PlayerDoubleJump>();
+    }
+
     void Update()
     {
         // Incrementar la velocidad poco a poco, pero solo hasta el máximo permitido
@@ -44,19 +52,31 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // --- Lógica de Salto y Gravedad ---
+        bool jumpPressed = Keyboard.current.spaceKey.wasPressedThisFrame ||
+                           Keyboard.current.upArrowKey.wasPressedThisFrame;
+
         if (isGrounded)
         {
-            verticalVelocity = -1f; // Pequeña fuerza hacia abajo continua para mantenerlo en el piso
-            if (Keyboard.current.spaceKey.wasPressedThisFrame || Keyboard.current.upArrowKey.wasPressedThisFrame)
+            airJumpCount     = 0;
+            verticalVelocity = -1f;
+            if (jumpPressed)
             {
                 verticalVelocity = jumpForce;
-                isGrounded = false;
-                if (playerAnim != null) playerAnim.Play("Jump"); // Activar Animación
+                isGrounded       = false;
+                if (playerAnim != null) playerAnim.Play("Jump");
             }
         }
         else
         {
-            verticalVelocity += gravity * Time.deltaTime; // Aplicar gravedad
+            verticalVelocity += gravity * Time.deltaTime;
+
+            // Doble salto en el aire si el poder está activo
+            if (jumpPressed && airJumpCount < 1 && doubleJump != null && doubleJump.IsActive)
+            {
+                verticalVelocity = jumpForce;
+                airJumpCount++;
+                if (playerAnim != null) playerAnim.Play("Jump");
+            }
         }
 
         // Aplicar movimiento vertical
