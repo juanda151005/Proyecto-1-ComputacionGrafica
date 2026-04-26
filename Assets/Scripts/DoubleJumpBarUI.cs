@@ -28,32 +28,37 @@ public class DoubleJumpBarUI : MonoBehaviour
 
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            power  = player.GetComponent<PlayerDoubleJump>();
-            shield = player.GetComponent<PlayerShield>();
-        }
-
-        if (power == null)
-        {
-            Debug.LogWarning("[DoubleJumpBarUI] No encontré PlayerDoubleJump en el jugador.");
-            return;
-        }
-
         fillImage = fillRect != null ? fillRect.GetComponent<RawImage>() : null;
         panelRT   = GetComponent<RectTransform>();
         baseY     = panelRT != null ? panelRT.anchoredPosition.y : 516f;
 
-        power.OnPowerActivated += Show;
-        power.OnPowerExpired   += Hide;
-
         targetAlpha               = 0f;
-        panelGroup.alpha          = 0f;
-        panelGroup.interactable   = false;
-        panelGroup.blocksRaycasts = false;
+        if (panelGroup != null)
+        {
+            panelGroup.alpha          = 0f;
+            panelGroup.interactable   = false;
+            panelGroup.blocksRaycasts = false;
+        }
 
         SetFill(1f);
+
+        TryBindPlayer();
+    }
+
+    void TryBindPlayer()
+    {
+        if (power != null) return;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+
+        power  = player.GetComponent<PlayerDoubleJump>();
+        shield = player.GetComponent<PlayerShield>();
+
+        if (power == null) return;
+
+        power.OnPowerActivated += Show;
+        power.OnPowerExpired   += Hide;
     }
 
     void OnDestroy()
@@ -66,7 +71,14 @@ public class DoubleJumpBarUI : MonoBehaviour
     void Update()
     {
         // Fade
-        panelGroup.alpha = Mathf.Lerp(panelGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
+        if (panelGroup != null)
+            panelGroup.alpha = Mathf.Lerp(panelGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
+
+        if (power == null)
+        {
+            TryBindPlayer();
+            return;
+        }
 
         // Posición: si escudo también activo, subir para que se vean las dos
         if (panelRT != null)
@@ -78,7 +90,7 @@ public class DoubleJumpBarUI : MonoBehaviour
             panelRT.anchoredPosition = pos;
         }
 
-        if (power == null || !power.IsActive) return;
+        if (!power.IsActive) return;
         SetFill(power.PowerTimeNormalized);
     }
 

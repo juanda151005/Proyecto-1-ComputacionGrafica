@@ -22,27 +22,34 @@ public class ShieldBarUI : MonoBehaviour
 
     void Start()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null) shield = player.GetComponent<PlayerShield>();
+        fillImage = fillRect != null ? fillRect.GetComponent<RawImage>() : null;
 
-        if (shield == null)
+        // Oculto al inicio
+        targetAlpha               = 0f;
+        if (panelGroup != null)
         {
-            Debug.LogWarning("[ShieldBarUI] No encontre PlayerShield en el jugador.");
-            return;
+            panelGroup.alpha          = 0f;
+            panelGroup.interactable   = false;
+            panelGroup.blocksRaycasts = false;
         }
 
-        fillImage = fillRect != null ? fillRect.GetComponent<RawImage>() : null;
+        SetFill(1f);
+
+        TryBindShield();
+    }
+
+    void TryBindShield()
+    {
+        if (shield != null) return;
+
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) return;
+
+        shield = player.GetComponent<PlayerShield>();
+        if (shield == null) return;
 
         shield.OnShieldActivated += Show;
         shield.OnShieldExpired   += Hide;
-
-        // Oculto al inicio
-        targetAlpha          = 0f;
-        panelGroup.alpha     = 0f;
-        panelGroup.interactable   = false;
-        panelGroup.blocksRaycasts = false;
-
-        SetFill(1f);
     }
 
     void OnDestroy()
@@ -55,9 +62,16 @@ public class ShieldBarUI : MonoBehaviour
     void Update()
     {
         // Fade suave
-        panelGroup.alpha = Mathf.Lerp(panelGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
+        if (panelGroup != null)
+            panelGroup.alpha = Mathf.Lerp(panelGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
 
-        if (shield == null || !shield.IsShielded) return;
+        if (shield == null)
+        {
+            TryBindShield();
+            return;
+        }
+
+        if (!shield.IsShielded) return;
 
         SetFill(shield.ShieldTimeNormalized);
     }
