@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadtoStage : MonoBehaviour
 {
-    
+
     [SerializeField] GameObject fadeOut;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

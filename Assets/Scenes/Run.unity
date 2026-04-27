@@ -9684,6 +9684,7 @@ GameObject:
   - component: {fileID: 538157208}
   - component: {fileID: 538157209}
   - component: {fileID: 538157210}
+  - component: {fileID: 538157211}
   m_Layer: 0
   m_Name: Runner
   m_TagString: Player
@@ -9891,6 +9892,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDoubleJump
   minDuration: 6
   maxDuration: 12
+--- !u!114 &538157211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538157201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 483fbc651e6874a9197868b2745cd07f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoubleJumpBoots
+  bodyColor: {r: 0.06, g: 0.04, b: 0.02, a: 1}
+  stripeColor: {r: 1, g: 0.72, b: 0.05, a: 1}
+  emissIntensity: 5
 --- !u!1001 &542710945
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21297,10 +21313,10 @@ MonoBehaviour:
     weight: 1
   - prefab: {fileID: 7428931083984123577, guid: 49eeac12e68783540852e0b01ebe60e8, type: 3}
     difficulty: 1
-    weight: 1
+    weight: 0.3
   - prefab: {fileID: 7428931083984123577, guid: 0feb2c32a28e16d41aec302fc897f706, type: 3}
-    difficulty: 1
-    weight: 1
+    difficulty: 0
+    weight: 0.25
   player: {fileID: 538157205}
   segmentLength: 50
   segmentsAhead: 5

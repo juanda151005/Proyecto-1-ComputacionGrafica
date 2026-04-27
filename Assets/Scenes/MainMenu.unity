@@ -6277,7 +6277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30a18dd4e3c36492e9db52427b2d7892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShieldBarUI
-  fillImage: {fileID: 1267603065}
+  fillRect: {fileID: 0}
   panelGroup: {fileID: 1321625302}
   colorFull: {r: 0.25, g: 0.78, b: 1, a: 1}
   colorLow: {r: 1, g: 0.35, b: 0.2, a: 1}
