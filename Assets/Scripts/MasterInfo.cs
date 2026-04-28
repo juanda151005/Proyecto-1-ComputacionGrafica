@@ -13,6 +13,7 @@ public class MasterInfo : MonoBehaviour
     void Start()
     {
         coinCount = 0;
+
         GameObject found = GameObject.FindGameObjectWithTag("Player");
         if (found != null)
         {
@@ -21,7 +22,6 @@ public class MasterInfo : MonoBehaviour
         }
     }
 
-    /// Distancia recorrida en la partida actual (accesible desde GameManager).
     public static int CurrentDistance { get; private set; }
 
     void Update()
@@ -32,6 +32,7 @@ public class MasterInfo : MonoBehaviour
         if (player != null)
         {
             CurrentDistance = Mathf.Max(0, Mathf.FloorToInt(player.position.z - startZ));
+
             if (distanceDisplay != null)
                 distanceDisplay.text = "DIST: " + CurrentDistance + " m";
         }

@@ -5,10 +5,15 @@ using UnityEngine;
 public class DoubleJumpBoots : MonoBehaviour
 {
     [Header("Colores")]
-    [SerializeField] Color coreColor   = new Color(1f,    0.72f, 0.05f); // dorado
-    [SerializeField] Color accentColor = new Color(1f,    0.40f, 0.02f); // naranja cálido
+    [SerializeField] Color coreColor   = new Color(1f,    0.72f, 0.05f);
+    [SerializeField] Color accentColor = new Color(1f,    0.40f, 0.02f);
     [SerializeField] Color armorColor  = new Color(0.04f, 0.03f, 0.01f);
     [SerializeField] float glowPower   = 10f;
+
+    [Header("Shaders")]
+    [SerializeField] Shader unlitShader;
+    [SerializeField] Shader litShader;
+    [SerializeField] Shader particleUnlitShader;
 
     [Header("Posición")]
     [SerializeField] float downOffset  = 0.12f;
@@ -24,7 +29,6 @@ public class DoubleJumpBoots : MonoBehaviour
 
     readonly List<Transform> orbitRings = new List<Transform>();
 
-    // ── Inicio ───────────────────────────────────────────────────────────────
     void Start()
     {
         var dj = GetComponent<PlayerDoubleJump>();
@@ -39,15 +43,15 @@ public class DoubleJumpBoots : MonoBehaviour
         rightFoot = FindBone("mixamorig:RightFoot");
 
         if (leftFoot == null || rightFoot == null)
-            Debug.LogWarning("[DoubleJumpBoots] Huesos de pie no encontrados.");
+            Debug.LogWarning("[DoubleJumpBoots] Huesos de pie no encontrados. Revisa los nombres del rig.");
 
         leftRoot  = BuildBoot(false);
         rightRoot = BuildBoot(true);
-
         HideBoots();
     }
 
-    // ── LateUpdate: seguimiento world-space ──────────────────────────────────
+    // LateUpdate corre despues de que la animacion del personaje mueve los huesos,
+    // evitando que las botas queden un frame atrasadas.
     void LateUpdate()
     {
         if (!active) return;
@@ -71,6 +75,7 @@ public class DoubleJumpBoots : MonoBehaviour
     void Follow(Transform foot, GameObject root, Light lt)
     {
         if (foot == null || root == null) return;
+
         root.transform.position = foot.position + Vector3.down * downOffset;
 
         Vector3 fwd = transform.forward; fwd.y = 0f;
@@ -80,12 +85,10 @@ public class DoubleJumpBoots : MonoBehaviour
         if (lt != null) lt.transform.position = foot.position + Vector3.up * 0.08f;
     }
 
-    // ── Construcción de una bota ─────────────────────────────────────────────
     GameObject BuildBoot(bool isRight)
     {
         var root = new GameObject(isRight ? "DJBoot_R" : "DJBoot_L");
 
-        // ─ 1. SUELA REACTORA ─────────────────────────────────────────────────
         Cyl(root, "Sole",
             new Vector3(0f,  0.01f, 0.02f),
             new Vector3(0.28f, 0.04f, 0.44f), glowA);
@@ -94,7 +97,6 @@ public class DoubleJumpBoots : MonoBehaviour
             new Vector3(0f, -0.012f, 0.02f),
             new Vector3(0.24f, 0.025f, 0.38f), glowB);
 
-        // ─ 2. CORAZA PRINCIPAL ───────────────────────────────────────────────
         Box(root, "ArmorCore",
             new Vector3(0f,    0.11f,  0.01f),
             new Vector3(0.22f, 0.20f, 0.34f), armorMat);
@@ -114,7 +116,6 @@ public class DoubleJumpBoots : MonoBehaviour
             new Vector3(0f, 0.08f, -0.17f),
             new Vector3(0.16f, 0.12f, 0.09f), armorMat);
 
-        // ─ 3. FRANJAS DE ENERGÍA ─────────────────────────────────────────────
         Box(root, "StripeTop",
             new Vector3(0f, 0.15f, 0.01f),
             new Vector3(0.23f, 0.028f, 0.35f), glowA);
@@ -130,7 +131,6 @@ public class DoubleJumpBoots : MonoBehaviour
             new Vector3( 0.15f, 0.10f, 0.01f),
             new Vector3(0.022f, 0.16f, 0.28f), glowA);
 
-        // ─ 4. PROPULSORES TRASEROS ───────────────────────────────────────────
         Box(root, "ThrusterL",
             new Vector3(-0.07f, 0.17f, -0.18f),
             new Vector3(0.07f, 0.22f, 0.08f), armorMat);
@@ -152,7 +152,6 @@ public class DoubleJumpBoots : MonoBehaviour
             new Vector3( 0.07f, 0.34f, -0.18f),
             new Vector3(0.055f, 0.05f, 0.055f), glowA);
 
-        // ─ 5. ANILLOS DE ÓRBITA ──────────────────────────────────────────────
         var r1 = Cyl(root, "Ring1",
             new Vector3(0f, 0.16f, 0f),
             new Vector3(0.42f, 0.020f, 0.42f), glowA);
@@ -170,7 +169,6 @@ public class DoubleJumpBoots : MonoBehaviour
         r3.transform.localRotation = Quaternion.Euler(0f, 75f, 85f);
         orbitRings.Add(r3.transform);
 
-        // ─ 6. PROYECCIÓN SUELO ───────────────────────────────────────────────
         Cyl(root, "GroundGlow",
             new Vector3(0f, -0.10f, 0f),
             new Vector3(0.55f, 0.006f, 0.55f), glowA);
@@ -179,7 +177,6 @@ public class DoubleJumpBoots : MonoBehaviour
             new Vector3(0f, -0.09f, 0f),
             new Vector3(0.38f, 0.005f, 0.38f), glowB);
 
-        // ─ 7. LUZ DE PUNTO ───────────────────────────────────────────────────
         var ltGO = new GameObject("BootLight");
         ltGO.transform.SetParent(root.transform, false);
         ltGO.transform.localPosition = new Vector3(0f, 0.20f, 0f);
@@ -191,7 +188,6 @@ public class DoubleJumpBoots : MonoBehaviour
         lt.shadows   = LightShadows.None;
         if (isRight) rightLight = lt; else leftLight = lt;
 
-        // ─ 8. PARTÍCULAS ─────────────────────────────────────────────────────
         Sparks(root);
         JetParticles(root, -0.09f);
         JetParticles(root,  0.09f);
@@ -200,14 +196,13 @@ public class DoubleJumpBoots : MonoBehaviour
         return root;
     }
 
-    // ── Partículas ───────────────────────────────────────────────────────────
     void Sparks(GameObject parent)
     {
         var go = new GameObject("Sparks");
         go.transform.SetParent(parent.transform, false);
         go.transform.localPosition = new Vector3(0f, 0.01f, 0f);
 
-        var ps = go.AddComponent<ParticleSystem>();
+        var ps   = go.AddComponent<ParticleSystem>();
         var main = ps.main;
         main.startLifetime   = new ParticleSystem.MinMaxCurve(0.4f, 1f);
         main.startSpeed      = new ParticleSystem.MinMaxCurve(1f, 3f);
@@ -226,7 +221,7 @@ public class DoubleJumpBoots : MonoBehaviour
         sh.scale     = new Vector3(0.25f, 0.015f, 0.42f);
 
         var col = ps.colorOverLifetime; col.enabled = true;
-        var g = new Gradient();
+        var g   = new Gradient();
         g.SetKeys(
             new[] { new GradientColorKey(new Color(1f, 0.95f, 0.3f), 0f),
                     new GradientColorKey(new Color(1f, 0.6f, 0.05f), 0.5f),
@@ -246,7 +241,7 @@ public class DoubleJumpBoots : MonoBehaviour
         go.transform.SetParent(parent.transform, false);
         go.transform.localPosition = new Vector3(xOff, 0.31f, -0.18f);
 
-        var ps = go.AddComponent<ParticleSystem>();
+        var ps   = go.AddComponent<ParticleSystem>();
         var main = ps.main;
         main.startLifetime   = new ParticleSystem.MinMaxCurve(0.15f, 0.40f);
         main.startSpeed      = new ParticleSystem.MinMaxCurve(1.5f, 4f);
@@ -261,7 +256,9 @@ public class DoubleJumpBoots : MonoBehaviour
         var vel = ps.velocityOverLifetime;
         vel.enabled = true;
         vel.space   = ParticleSystemSimulationSpace.Local;
-        vel.z       = new ParticleSystem.MinMaxCurve(-3f, -1.5f);
+        vel.x = new ParticleSystem.MinMaxCurve(0f, 0f);
+        vel.y = new ParticleSystem.MinMaxCurve(0f, 0f);
+        vel.z = new ParticleSystem.MinMaxCurve(-3f, -1.5f);
 
         var em = ps.emission; em.rateOverTime = 40f;
 
@@ -271,7 +268,7 @@ public class DoubleJumpBoots : MonoBehaviour
         sh.radius    = 0.03f;
 
         var col = ps.colorOverLifetime; col.enabled = true;
-        var g = new Gradient();
+        var g   = new Gradient();
         g.SetKeys(
             new[] { new GradientColorKey(new Color(1f, 1f, 0.5f), 0f),
                     new GradientColorKey(new Color(1f, 0.5f, 0.05f), 0.6f),
@@ -289,7 +286,7 @@ public class DoubleJumpBoots : MonoBehaviour
     {
         var go = new GameObject("Trail");
         go.transform.SetParent(parent.transform, false);
-        go.transform.localPosition = new Vector3(0f, 0f, 0f);
+        go.transform.localPosition = Vector3.zero;
 
         var tr = go.AddComponent<TrailRenderer>();
         tr.time         = 0.35f;
@@ -310,7 +307,6 @@ public class DoubleJumpBoots : MonoBehaviour
         tr.colorGradient = tg;
     }
 
-    // ── Helpers geometría ─────────────────────────────────────────────────────
     GameObject Box(GameObject parent, string n, Vector3 pos, Vector3 scale, Material mat)
     {
         var go = GameObject.CreatePrimitive(PrimitiveType.Cube);
@@ -335,17 +331,16 @@ public class DoubleJumpBoots : MonoBehaviour
         return go;
     }
 
-    // ── Materiales ────────────────────────────────────────────────────────────
     Material UnlitMat(Color color, float power)
     {
-        var mat = new Material(Shader.Find("Universal Render Pipeline/Unlit"));
+        var mat = new Material(unlitShader);
         mat.SetColor("_BaseColor", color * power);
         return mat;
     }
 
     Material ArmorMat()
     {
-        var mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        var mat = new Material(litShader);
         mat.SetColor("_BaseColor",     armorColor);
         mat.SetFloat("_Metallic",      0.95f);
         mat.SetFloat("_Smoothness",    0.85f);
@@ -357,19 +352,18 @@ public class DoubleJumpBoots : MonoBehaviour
 
     Material ParticleMat(Color color)
     {
-        var mat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+        var mat = new Material(particleUnlitShader);
         mat.SetColor("_BaseColor", color);
         return mat;
     }
 
     Material TrailMat()
     {
-        var mat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+        var mat = new Material(particleUnlitShader);
         mat.SetColor("_BaseColor", coreColor);
         return mat;
     }
 
-    // ── Búsqueda de hueso ─────────────────────────────────────────────────────
     Transform FindBone(string name)
     {
         foreach (Transform t in GetComponentsInChildren<Transform>(true))
@@ -377,7 +371,6 @@ public class DoubleJumpBoots : MonoBehaviour
         return null;
     }
 
-    // ── Mostrar / Ocultar ─────────────────────────────────────────────────────
     void ShowBoots()
     {
         if (leftRoot  != null) leftRoot.SetActive(true);

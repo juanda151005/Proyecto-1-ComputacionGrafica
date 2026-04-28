@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// Barra de escudo arriba a la derecha. Usa RawImage igual que el contador de monedas.
 public class ShieldBarUI : MonoBehaviour
 {
     [Header("Referencias UI")]
-    [SerializeField] RectTransform fillRect;   // RectTransform del fill (su anchorMax.x = 0..1)
+    [SerializeField] RectTransform fillRect;
     [SerializeField] CanvasGroup   panelGroup;
 
     [Header("Colores")]
@@ -24,8 +23,7 @@ public class ShieldBarUI : MonoBehaviour
     {
         fillImage = fillRect != null ? fillRect.GetComponent<RawImage>() : null;
 
-        // Oculto al inicio
-        targetAlpha               = 0f;
+        targetAlpha = 0f;
         if (panelGroup != null)
         {
             panelGroup.alpha          = 0f;
@@ -34,7 +32,6 @@ public class ShieldBarUI : MonoBehaviour
         }
 
         SetFill(1f);
-
         TryBindShield();
     }
 
@@ -61,7 +58,6 @@ public class ShieldBarUI : MonoBehaviour
 
     void Update()
     {
-        // Fade suave
         if (panelGroup != null)
             panelGroup.alpha = Mathf.Lerp(panelGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
 
@@ -72,7 +68,6 @@ public class ShieldBarUI : MonoBehaviour
         }
 
         if (!shield.IsShielded) return;
-
         SetFill(shield.ShieldTimeNormalized);
     }
 
@@ -80,7 +75,6 @@ public class ShieldBarUI : MonoBehaviour
     {
         if (fillRect != null)
         {
-            // Ancho de la barra por ancla: de 0 a 1
             Vector2 aMax  = fillRect.anchorMax;
             aMax.x        = Mathf.Clamp01(t);
             fillRect.anchorMax = aMax;

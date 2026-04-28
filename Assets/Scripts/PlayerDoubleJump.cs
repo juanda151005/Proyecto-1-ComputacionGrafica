@@ -1,15 +1,13 @@
 using UnityEngine;
 
-/// Gestiona el estado del poder de doble salto.
-/// Coloca este componente en el mismo GameObject que PlayerMovement.
 public class PlayerDoubleJump : MonoBehaviour
 {
     [Header("Duración")]
     [SerializeField] float minDuration = 6f;
     [SerializeField] float maxDuration = 12f;
 
-    public bool  IsActive             { get; private set; }
-    public float PowerTimeNormalized  { get; private set; }
+    public bool  IsActive            { get; private set; }
+    public float PowerTimeNormalized { get; private set; }
 
     public event System.Action OnPowerActivated;
     public event System.Action OnPowerExpired;
@@ -44,7 +42,6 @@ public class PlayerDoubleJump : MonoBehaviour
         PowerTimeNormalized = 0f;
         OnPowerExpired?.Invoke();
 
-        // Puff naranja al expirar
         PowerExpireEffect.Spawn(transform.position + Vector3.up * 0.8f,
                                 new Color(1f, 0.45f, 0.05f));
 

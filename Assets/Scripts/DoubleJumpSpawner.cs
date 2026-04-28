@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class DoubleJumpSpawner : MonoBehaviour
 {
+    [Header("Shaders")]
+    [SerializeField] Shader litShader;
+
     [Header("Frecuencia de aparición")]
     [SerializeField] float minSpawnInterval = 200f;
     [SerializeField] float maxSpawnInterval = 600f;
@@ -15,6 +18,8 @@ public class DoubleJumpSpawner : MonoBehaviour
 
     void Start()
     {
+        DoubleJumpPickup.s_litShader = litShader;
+
         GameObject found = GameObject.FindGameObjectWithTag("Player");
         if (found != null) player = found.transform;
 

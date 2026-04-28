@@ -1,7 +1,5 @@
 using UnityEngine;
 
-/// Meteoro que cae del cielo con sombra de advertencia y explosion al impactar.
-/// Se crea en codigo desde MeteorSpawner — no necesita prefab propio.
 public class Meteor : MonoBehaviour
 {
     [HideInInspector] public float fallSpeed = 13f;
@@ -13,18 +11,18 @@ public class Meteor : MonoBehaviour
     float        startY;
     bool         impacted;
 
-    // Colores de la sombra
-    static readonly Color colFar  = new Color(1f, 0.88f, 0f,  0.50f);   // amarillo
-    static readonly Color colNear = new Color(1f, 0.08f, 0f,  0.88f);   // rojo
+    internal static Shader s_litShader;
+    internal static Shader s_particleUnlitShader;
+
+    static readonly Color colFar  = new Color(1f, 0.88f, 0f,  0.50f);
+    static readonly Color colNear = new Color(1f, 0.08f, 0f,  0.88f);
 
     void Start()
     {
         startY = transform.position.y;
 
-        // Tag para que CollisionDetect lo detecte
         gameObject.tag = "Obstacle";
 
-        // Collider trigger
         SphereCollider sc = gameObject.AddComponent<SphereCollider>();
         sc.isTrigger = true;
         sc.radius    = 0.8f;
@@ -40,10 +38,10 @@ public class Meteor : MonoBehaviour
         vis.name = "MeteorVis";
         vis.transform.SetParent(transform, false);
         vis.transform.localScale = Vector3.one * 1.5f;
+
         Destroy(vis.GetComponent<Collider>());
 
-        // Material oscuro con emision naranja intensa (roca ardiendo)
-        Material mat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        Material mat = new Material(s_litShader);
         mat.color = new Color(0.10f, 0.03f, 0.01f);
         mat.EnableKeyword("_EMISSION");
         mat.SetColor("_EmissionColor", new Color(1f, 0.38f, 0.02f) * 2.5f);
@@ -58,8 +56,7 @@ public class Meteor : MonoBehaviour
         trail.endWidth    = 0.0f;
         trail.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 
-        Material tMat = new Material(Shader.Find("Sprites/Default"));
-        if (tMat.shader == null) tMat = new Material(Shader.Find("Universal Render Pipeline/Particles/Unlit"));
+        Material tMat = new Material(s_particleUnlitShader);
         trail.material = tMat;
 
         Gradient g = new Gradient();
@@ -79,8 +76,7 @@ public class Meteor : MonoBehaviour
         shadowObj.transform.localScale = new Vector3(5f, 0.01f, 5f);
         Destroy(shadowObj.GetComponent<Collider>());
 
-        // Material transparente (mismo patron que PlayerShield)
-        shadowMat = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        shadowMat = new Material(s_litShader);
         shadowMat.SetFloat("_Surface",   1f);
         shadowMat.SetFloat("_Blend",     0f);
         shadowMat.SetFloat("_SrcBlend",  5f);
@@ -101,18 +97,15 @@ public class Meteor : MonoBehaviour
     {
         if (impacted) return;
 
-        // Caida y rotacion
         transform.position += Vector3.down * fallSpeed * Time.deltaTime;
         transform.Rotate(55f * Time.deltaTime, 35f * Time.deltaTime, 20f * Time.deltaTime, Space.World);
 
-        // Progreso: 1=lejos, 0=cerca
         float t = Mathf.Clamp01((transform.position.y - groundY) / (startY - groundY));
 
-        // Sombra: encoge y se vuelve roja al acercarse
         float s = Mathf.Lerp(1.0f, 5.5f, t);
-        // Pulso urgente cuando esta cerca
         float pulse = 1f + Mathf.Sin(Time.time * Mathf.Lerp(12f, 2f, t)) * 0.06f * (1f - t);
         shadowObj.transform.localScale = new Vector3(s * pulse, 0.01f, s * pulse);
+
         shadowMat.color = Color.Lerp(colNear, colFar, t);
 
         if (transform.position.y <= groundY + 0.35f)
@@ -126,11 +119,8 @@ public class Meteor : MonoBehaviour
         if (shadowObj != null) Destroy(shadowObj);
         if (trail     != null) trail.Clear();
 
-        // Explosion grande naranja
         SpawnBurst(transform.position,               new Color(1f, 0.42f, 0.04f), 90, 0.9f, 6f);
-        // Chispas blancas
         SpawnBurst(transform.position + Vector3.up,  new Color(1f, 0.90f, 0.60f), 35, 0.5f, 4f);
-        // Humo gris que sube
         SpawnBurst(transform.position + Vector3.up * 0.5f, new Color(0.3f, 0.3f, 0.3f), 25, 1.2f, 2f);
 
         Destroy(gameObject, 0.05f);
@@ -172,16 +162,15 @@ public class Meteor : MonoBehaviour
             new[] { new GradientAlphaKey(1f,    0f), new GradientAlphaKey(0f,    1f) });
         col.color = new ParticleSystem.MinMaxGradient(g);
 
-        Shader sh = Shader.Find("Particles/Standard Unlit");
-        if (sh == null) sh = Shader.Find("Universal Render Pipeline/Particles/Unlit");
-        if (sh != null)
+        if (s_particleUnlitShader != null)
         {
-            var mat = new Material(sh);
+            var mat = new Material(s_particleUnlitShader);
             mat.SetColor("_BaseColor", color);
             go.GetComponent<ParticleSystemRenderer>().material = mat;
         }
 
         ps.Play();
+
         Destroy(go, main.duration + main.startLifetime.constantMax + 0.3f);
     }
 }

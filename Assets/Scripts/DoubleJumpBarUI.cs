@@ -1,8 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/// Barra del poder de doble salto.
-/// Aparece en la misma posición que el escudo. Si ambos están activos, sube para dejar espacio.
 public class DoubleJumpBarUI : MonoBehaviour
 {
     [Header("Referencias UI")]
@@ -15,9 +13,9 @@ public class DoubleJumpBarUI : MonoBehaviour
     [SerializeField] float lowThreshold = 0.3f;
 
     [Header("Animación")]
-    [SerializeField] float fadeSpeed = 6f;
-    [SerializeField] float moveSpeed = 8f;
-    [SerializeField] float stackOffset = 50f;   // cuánto sube cuando hay dos barras activas
+    [SerializeField] float fadeSpeed   = 6f;
+    [SerializeField] float moveSpeed   = 8f;
+    [SerializeField] float stackOffset = 50f;
 
     PlayerDoubleJump power;
     PlayerShield     shield;
@@ -32,7 +30,7 @@ public class DoubleJumpBarUI : MonoBehaviour
         panelRT   = GetComponent<RectTransform>();
         baseY     = panelRT != null ? panelRT.anchoredPosition.y : 516f;
 
-        targetAlpha               = 0f;
+        targetAlpha = 0f;
         if (panelGroup != null)
         {
             panelGroup.alpha          = 0f;
@@ -41,7 +39,6 @@ public class DoubleJumpBarUI : MonoBehaviour
         }
 
         SetFill(1f);
-
         TryBindPlayer();
     }
 
@@ -70,7 +67,6 @@ public class DoubleJumpBarUI : MonoBehaviour
 
     void Update()
     {
-        // Fade
         if (panelGroup != null)
             panelGroup.alpha = Mathf.Lerp(panelGroup.alpha, targetAlpha, Time.deltaTime * fadeSpeed);
 
@@ -80,7 +76,6 @@ public class DoubleJumpBarUI : MonoBehaviour
             return;
         }
 
-        // Posición: si escudo también activo, subir para que se vean las dos
         if (panelRT != null)
         {
             bool bothActive = power.IsActive && shield != null && shield.IsShielded;

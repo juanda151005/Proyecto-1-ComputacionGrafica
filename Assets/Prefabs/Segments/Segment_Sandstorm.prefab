@@ -2768,7 +2768,7 @@ Transform:
   m_GameObject: {fileID: 4561395869118834284}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -10, y: 3, z: 0}
+  m_LocalPosition: {x: -10, y: 3, z: 21.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2964,7 +2964,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.8509804, g: 0.7019608, b: 0.54901963, a: 0.3137255}
+      maxColor: {r: 1, g: 0.88235295, b: 0.7607843, a: 0.3137255}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -7523,7 +7523,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9b211c108adee46fa818a47b3f544fc1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8062,7 +8062,7 @@ Transform:
   m_GameObject: {fileID: 5674310736466960372}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -10, y: 3, z: 0}
+  m_LocalPosition: {x: -10, y: 0.6, z: 27.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8258,7 +8258,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.6528301, g: 0.4759373, b: 0.29438946, a: 0.15686275}
+      maxColor: {r: 1, g: 0.8810388, b: 0.759434, a: 0.15686275}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -12817,7 +12817,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9b211c108adee46fa818a47b3f544fc1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13855,6 +13855,7 @@ MonoBehaviour:
   fogColor: {r: 0.85, g: 0.7, b: 0.5, a: 1}
   fogDensity: 0.04
   fogMode: 3
+  transitionSpeed: 1.8
 --- !u!114 &2093677470705447848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13868,6 +13869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WindPushZone
   windStrength: 3
+  rampTime: 2.5
   rightLimit: 5.5
   leftLimit: -5.5
 --- !u!1 &9039553180299622627

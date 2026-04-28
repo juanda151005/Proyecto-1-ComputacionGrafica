@@ -8,6 +8,8 @@ public class DoubleJumpPickup : MonoBehaviour
     [SerializeField] float bobSpeed    = 2f;
     [SerializeField] float bobHeight   = 0.25f;
 
+    internal static Shader s_litShader;
+
     Vector3 spawnPos;
 
     void Awake()
@@ -15,7 +17,6 @@ public class DoubleJumpPickup : MonoBehaviour
         SphereCollider col = GetComponent<SphereCollider>();
         col.isTrigger = true;
         col.radius    = 1.2f;
-
         BuildVisual();
     }
 
@@ -23,27 +24,25 @@ public class DoubleJumpPickup : MonoBehaviour
 
     void BuildVisual()
     {
-        // Esfera interior — naranja sólida
         GameObject inner = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         inner.name = "DJIcon_Inner";
         inner.transform.SetParent(transform, false);
         inner.transform.localScale = Vector3.one * 0.6f;
         Destroy(inner.GetComponent<Collider>());
 
-        Material matInner = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        Material matInner = new Material(s_litShader);
         matInner.color = new Color(1f, 0.55f, 0.1f, 1f);
         matInner.EnableKeyword("_EMISSION");
         matInner.SetColor("_EmissionColor", new Color(1f, 0.4f, 0f) * 2f);
         inner.GetComponent<Renderer>().material = matInner;
 
-        // Esfera exterior — aura naranja transparente
         GameObject outer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         outer.name = "DJIcon_Outer";
         outer.transform.SetParent(transform, false);
         outer.transform.localScale = Vector3.one * 1.1f;
         Destroy(outer.GetComponent<Collider>());
 
-        Material matOuter = new Material(Shader.Find("Universal Render Pipeline/Lit"));
+        Material matOuter = new Material(s_litShader);
         matOuter.SetFloat("_Surface",   1f);
         matOuter.SetFloat("_Blend",     0f);
         matOuter.SetFloat("_SrcBlend",  5f);
@@ -72,7 +71,6 @@ public class DoubleJumpPickup : MonoBehaviour
         if (dj == null) dj = other.GetComponentInParent<PlayerDoubleJump>();
 
         if (dj != null) dj.Activate();
-
         gameObject.SetActive(false);
     }
 }
